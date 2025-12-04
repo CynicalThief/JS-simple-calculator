@@ -26,6 +26,9 @@ const zero = document.getElementById("Zero");
 const deci = document.getElementById("Deci");
 const result = document.getElementById("Result");
 
+const buttons = document.querySelectorAll('.btn');
+const hist = document.getElementById("history");
+
 ac.addEventListener('click', () => {
     bar.innerText = "";
 })
@@ -36,7 +39,7 @@ del.addEventListener('click', () => {
     bar.innerText = bar.innerText.slice(0, -1);
 });
 division.addEventListener('click', () => {
-    bar.innerText += " / ";
+    bar.innerText += "/";
 })
 
 seven.addEventListener('click', () => {
@@ -49,7 +52,7 @@ nine.addEventListener('click', () => {
     bar.innerText += "9";
 })
 multi.addEventListener('click', () => {
-    bar.innerText += " * ";
+    bar.innerText += "*";
 })
 
 four.addEventListener('click', () => {
@@ -62,7 +65,7 @@ six.addEventListener('click', () => {
     bar.innerText += "6";
 })
 sub.addEventListener('click', () => {
-    bar.innerText += " - ";
+    bar.innerText += "-";
 })
 
 one.addEventListener('click', () => {
@@ -88,5 +91,18 @@ deci.addEventListener('click', () => {
     bar.innerText += ".";
 })
 result.addEventListener('click', () => {
-    bar.innerText += " = ";
+    let calc = bar.innerText;
+    let res = eval(calc);
+    add_history(calc, res);
+    bar.innerText = res;
+        
 })
+
+const add_history = (msg, ans) => {
+    const divh = document.createElement("div");
+    divh.innerHTML += ">" + msg + " = " + ans + "<br>";
+    hist.appendChild(divh);
+    
+}
+
+
